@@ -27,7 +27,6 @@
                       =submit_tag pat(:delete), :class =>'list-menu-popover-delete-selected-btn btn btn-danger btn-small'
                       .btn.btn-default.btn-small.cancel=pat(:cancel)
         %th.header= mat(:report, :id)
-        %th.header= mat(:report, :location_name)
         %th.header= mat(:report, :created_at)
         %th.header.list-row-action-header
 
@@ -37,8 +36,7 @@
           %td.list-column.list-selectable
             =check_box_tag 'report_ids[]', :value => report.id, :class => 'list-selectable-checkbox'
           %td.list-column=report.id
-          %td.list-column=report.location_name
-          %td.list-column=report.created_at.strftime("%d/%m/%Y %H:%M")
+          %td.list-column="Report for: " + report.created_at.strftime("%d/%m/%Y %H:%M")
           %td.list-column.list-row-action
             .list-row-action-wrapper
               =link_to tag_icon(:edit), :href => url(:reports, :edit, :id => report.id), :rel => :tooltip, :title => "#{pat(:edit)} report", :class => 'list-row-action-wrapper-link'

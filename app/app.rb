@@ -73,7 +73,7 @@ module Snowflake
       xml.instruct! :xml, :version => '1.0'
       xml.target! << "<!DOCTYPE MTN.XML PUBLIC 'MTN.XML 1.0' 'http://mtnxml.org/dtd/mtnxml-1.0.dtd'>\n"
       xml.report(:name => "Showdown Ski Area", :updated => @report.updated_at.strftime("%Y-%m-%d %H:%M:%S"),:units => "imperial") do
-      xml.operations(:resortStatus=>@report.resort_status, :openTime=> @report.opent_time, :closeTime=> @report.close_time,  :nightOpenTime =>@report.night_open_time, :nightCloseTime => @report.night_close_time, :totalAcres=>'640')
+      xml.operations(:resortStatus=>@report.resort_status, :openTime=> @report.open_time, :closeTime=> @report.close_time,  :nightOpenTime =>@report.night_open_time, :nightCloseTime => @report.night_close_time, :totalAcres=>'640')
         xml.currentConditions do
           xml.resortWide(:totalAcresOpen => "640")
             xml.resortLocations do
