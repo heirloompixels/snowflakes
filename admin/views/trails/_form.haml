@@ -1,0 +1,55 @@
+- error = @trail.errors.key?(:name) && @trail.errors[:name].count > 0
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :name, :class => 'control-label'
+  .controls
+    =f.text_field :name, :class => 'form-control input-large input-with-feedback', :autofocus => true
+    %span.help-inline=error ? f.error_message_on(:name, :class => 'text-error') : pat(' ')
+- error = @trail.errors.key?(:status) && @trail.errors[:status].count > 0
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :status, :class => 'control-label'
+  .controls
+    =f.select :status, :options => ['open', 'closed']
+    %span.help-inline=error ? f.error_message_on(:status, :class => 'text-error') : pat(' ')
+- error = @trail.errors.key?(:groomed) && @trail.errors[:groomed].count > 0
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :groomed, :class => 'control-label'
+  .controls
+    =f.select :groomed, :options => ['yes', 'no']
+    %span.help-inline=error ? f.error_message_on(:groomed, :class => 'text-error') : pat(' ')
+- error = @trail.errors.key?(:snow_making) && @trail.errors[:snow_making].count > 0
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :snow_making, :class => 'control-label'
+  .controls
+    =f.select :snow_making, :options => ['no', 'yes']
+    %span.help-inline=error ? f.error_message_on(:snow_making, :class => 'text-error') : pat(' ')
+- error = @trail.errors.key?(:featured_terrain) && @trail.errors[:featured_terrain].count > 0
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :featured_terrain, :class => 'control-label'
+  .controls
+    =f.select :featured_terrain, :options => ['no', 'yes']
+    %span.help-inline=error ? f.error_message_on(:featured_terrain, :class => 'text-error') : pat(' ')
+- error = @trail.errors.key?(:night_operation) && @trail.errors[:night_operation].count > 0
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :night_operation, :class => 'control-label'
+  .controls
+    =f.select :night_operation, :options => ['no', 'yes']
+    %span.help-inline=error ? f.error_message_on(:night_operation, :class => 'text-error') : pat(' ')
+- error = @trail.errors.key?(:difficulty) && @trail.errors[:difficulty].count > 0
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :difficulty, :class => 'control-label'
+  .controls
+    =f.select :difficulty, :options => ['beginner', 'advancedBeginner', 'intermediate', 'advancedIntermediate', 'advanced', 'expert']
+    %span.help-inline=error ? f.error_message_on(:difficulty, :class => 'text-error') : pat(' ')
+- error = @trail.errors.key?(:type) && @trail.errors[:type].count > 0
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :type, :class => 'control-label'
+  .controls
+    =f.select :type, :options => ['downhill', 'nordic']
+    %span.help-inline=error ? f.error_message_on(:type, :class => 'text-error') : pat(' ')
+
+.form-actions
+  =f.submit pat(:save), :class => 'btn btn-primary'
+  &nbsp;
+  =f.submit pat(:save_and_continue), :class => 'btn btn-info', :name => 'save_and_continue'
+  &nbsp;
+  =link_to pat(:cancel), url(:trails, :index), :class => 'btn btn-default'

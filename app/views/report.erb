@@ -1,0 +1,154 @@
+<html>
+<head>
+<script src="/javascripts/jquery.js" type="text/javascript"></script>
+
+
+<script>
+$(document).ready(function(){
+        $.ajax({
+                type: "GET",
+                url: "http://localhost:3000/mtn.xml",
+                dataType: "xml",
+                success: function(xml) {
+                        $('#liftsOpen').text($(xml).find('comment[name="liftsOpen"]').text());
+                        $('#trailsOpen').text($(xml).find('comment[name="trailsOpen"]').text());
+                        $('#daysAndHours').text($(xml).find('comment[ name = "daysAndHours"]').text());
+                        $('#summitDepth').text($(xml).find('comment[ name = "summitDepth"]').text());
+                        $('#news').text($(xml).find('comment[ name = "news"]').text());
+                        $('#notes').text($(xml).find('comment[ name = "notes"]').text());
+                        $('#snowSunday').text($(xml).find('comment[ name = "snowSunday"]').text());
+
+
+                        var day = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"][(new Date()).getDay()]
+
+                        $('#anticipatedWeather').text($(xml).find('forecast[ name = "'+day+'"]').text());
+                        $('#anticipatedWeather').text($(xml).find('forecast[ name = "Tuesday"]').text());
+
+
+                        $('#snowOvernight').text($(xml).find('location').attr('snowOverNight'));
+                        $(xml).find('location').each(function(){
+
+                               // $('#snowOvernight').text($(this).attr('snowOverNight'));
+                               // $('#snowOvernight').text($(this).attr('snowOverNight'));
+
+
+                                $('#snow24Hours').text($(this).attr('snow24Hours'));
+                                $('#snowYTD').text($(this).attr('snowSeasonTotal'));
+                                $('#surfaceConditions').text($(this).attr('primarySurface'));
+                                $('#lodgeDepth').text($(this).attr('base'));
+                                $('#currentTemp ').text($(this).attr('temperature'));
+                                $('#currentWeather').text($(this).attr('weatherConditions'));
+
+
+
+
+
+
+
+                                /* $(this).find('desc').each(function(){
+                                        var brief = $(this).find('brief').text();
+                                        var long = $(this).find('long').text();
+                                        $('<div class="brief"></div>').html(brief).appendTo('#link_'+id);
+                                        $('<div class="long"></div>').html(long).appendTo('#link_'+id);
+                                });
+                           */
+
+
+
+                        });
+                }
+        });
+});
+</script>
+</head>
+<body>
+
+
+
+    <div id="report_wrapper">
+      <div id="report">    
+        <h2>Snow Report</h2>
+        <figure class="ribbon"></figure>
+        
+        <h3>Updated 11/23 at 11:32AM</h3>
+        <h3>Current Snowfall</h3>
+      <table>
+                                <tr>
+                <th>Days and Hours of Operation</th>
+                <td id="daysAndHours">0</td>
+                                </tr>
+                                <tr>
+                                        <th>Snow Overnight</th>
+                                        <td id="snowOvernight">0</td>
+                                </tr>
+                                <tr>
+                                        <th>Snow Last 24 Hours</th>
+                                        <td id="snow24Hours">0</td>
+                                </tr>
+                                <tr>
+                                        <th>Snow Since Sunday</th>
+                                        <td id="snowSunday">17</td>
+                                </tr>
+        </table>
+                <h3>Current Conditions</h3>
+        <table>
+          <tr>
+                <th>Total Snow YTD</th>
+                <td id="snowYTD">0</td>
+        </tr>
+        <tr>
+                <th>Surface Conditions</th>
+                <td id="surfaceConditions">0</td>
+        </tr>
+           <tr>
+                <th>Lodge Depth</th>
+                <td id="lodgeDepth">0</td>
+           </tr>
+        <tr>
+                <th>Summit Depth</th>
+                <td id="summitDepth">0</td>
+        </tr>
+        <tr>
+                <th>Trails Open</th>
+                <td id="trailsOpen">0</td>
+        </tr>
+        <tr>
+                <th>Lifts Open</th>
+                <td id="liftsOpen">0</td>
+        </tr>
+        <tr>
+                <th>Current Temperature</th>
+                <td id="currentTemp">0</td>
+        </tr>
+        <tr>
+                <th>Anticipated Temperature</th>
+                <td id="anticipatedTemp">0</td>
+        </tr>
+        <tr>
+                <th>Current Weather Conditions</th>
+                <td id="currentWeather">0</td>
+        </tr>
+        <tr>
+                <th>Anticipated Weather Conditions</th>
+                <td id="anticipatedWeather">0</td>
+        </tr>
+    </table>
+      <h4>Notes</h4>
+        <p id="notes">0</p>
+
+        <h4>News</h4>
+        <p id="news">0</p>
+        <h4>Park</h4>
+        <p id="park"></p>
+        <br/>
+            <a href="http://forecast.weather.gov/MapClick.php?lat=46.83647526765&lon=-110.71643829345703&site=tfx&smap=1&marine=0&unit=0&lg=en" title="Weather" target="_blank">Weather Report</a>
+            <br/>
+            <a href="http://www.wrh.noaa.gov/mesowest/getobext.php?wfo=tfx&sid=phym8&num=48" target="_blank" title="Porphyry Peak Weather Station">Porphyry Peak Weather Station</a>
+        </div>
+    </div>
+
+
+
+
+</body>
+</html>

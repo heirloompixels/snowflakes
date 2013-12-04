@@ -1,0 +1,8 @@
+%ul.nav.nav-tabs
+  %li=link_to tag_icon(:list, pat(:list)), url(:trails, :index)
+  %li=link_to tag_icon(:plus, pat(:new)), url(:trails, :new)
+  %li.active=link_to tag_icon(:edit, pat(:edit)), url(:trails, :edit, :id => @trail.id)
+
+.tabs-content
+  -form_for :trail, url(:trails, :update, :id => @trail.id), :method => :put, :class => 'form-horizontal' do |f|
+    =partial 'trails/form', :locals => { :f => f }

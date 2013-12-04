@@ -1,0 +1,37 @@
+- error = @lift.errors.key?(:name) && @lift.errors[:name].count > 0
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :name, :class => 'control-label'
+  .controls
+    =f.text_field :name, :class => 'form-control input-large input-with-feedback', :autofocus => true
+    %span.help-inline=error ? f.error_message_on(:name, :class => 'text-error') : pat(:example)
+- error = @lift.errors.key?(:persons) && @lift.errors[:persons].count > 0
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :persons, :class => 'control-label'
+  .controls
+    =f.text_field :persons, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:persons, :class => 'text-error') : pat(:example)
+- error = @lift.errors.key?(:type) && @lift.errors[:type].count > 0
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :type, :class => 'control-label'
+  .controls
+    =f.text_field :type, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:type, :class => 'text-error') : pat(:example)
+- error = @lift.errors.key?(:status) && @lift.errors[:status].count > 0
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :status, :class => 'control-label'
+  .controls
+    =f.text_field :status, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:status, :class => 'text-error') : pat(:example)
+- error = @lift.errors.key?(:night_status) && @lift.errors[:night_status].count > 0
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :night_status, :class => 'control-label'
+  .controls
+    =f.text_field :night_status, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:night_status, :class => 'text-error') : pat(:example)
+
+.form-actions
+  =f.submit pat(:save), :class => 'btn btn-primary'
+  &nbsp;
+  =f.submit pat(:save_and_continue), :class => 'btn btn-info', :name => 'save_and_continue'
+  &nbsp;
+  =link_to pat(:cancel), url(:lifts, :index), :class => 'btn btn-default'

@@ -1,0 +1,44 @@
+
+location_name:string
+
+ primary_surface:string 
+ secondary_surface:string 
+ base:string 
+ base_range:string 
+ storm_total:string 
+ snow_over_night:string 
+ snow_12_hours:string 
+ snow_24_hours:string 
+ snow_48_hours:string 
+ snow_72_hours:string 
+ snow_4_days:string 
+ snow_5_days:string
+ snow_7_days:string 
+ snow_season_total:string
+
+ >> lodge_depth
+ >> summit_depth
+
+ 
+ weather_conditions:string 
+ temperature:string 
+ visibility:string 
+ wind_direction:string 
+ wind_speed:string 
+ 
+ resort_status:string 
+ open_time:string 
+ close_time:string 
+ night_open_time:string 
+ night_close_time:string
+total_acres_open:string 
+
+>> days_hours_operation
+ 
+
+ >> trails_open
+ >> lifts_open
+
+ >> notes
+ >> news
+

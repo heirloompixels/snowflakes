@@ -1,0 +1,286 @@
+- error = @report.errors.key?(:location_name) && @report.errors[:location_name].count > 0
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :location_name, :class => 'control-label'
+  .controls
+    =f.text_field :location_name, :class => 'form-control input-large input-with-feedback', :autofocus => true
+    %span.help-inline=error ? f.error_message_on(:location_name, :class => 'text-error') : pat(" ")
+%h2 Snow Conditions
+- error = @report.errors.key?(:primary_surface) && @report.errors[:primary_surface].count > 0
+%fieldset.control-group{:class => error ? 'has-error' : 'showdown'}
+  =f.label :primary_surface, :class => 'control-label'
+  .controls
+    =f.text_field :primary_surface, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:primary_surface, :class => 'text-error') : pat(" ")
+- error = @report.errors.key?(:secondary_surface) && @report.errors[:secondary_surface].count > 0
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :secondary_surface, :class => 'control-label'
+  .controls
+    =f.text_field :secondary_surface, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:secondary_surface, :class => 'text-error') : pat(" ")
+- error = @report.errors.key?(:base) && @report.errors[:base].count > 0
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :base, :class => 'control-label'
+  .controls
+    =f.text_field :base, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:base, :class => 'text-error') : pat(" ")
+- error = @report.errors.key?(:base_range) && @report.errors[:base_range].count > 0
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :base_range, :class => 'control-label'
+  .controls
+    =f.text_field :base_range, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:base_range, :class => 'text-error') : pat(" ")
+- error = @report.errors.key?(:storm_total) && @report.errors[:storm_total].count > 0
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :storm_total, :class => 'control-label'
+  .controls
+    =f.text_field :storm_total, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:storm_total, :class => 'text-error') : pat(" ")
+- error = @report.errors.key?(:snow_over_night) && @report.errors[:snow_over_night].count > 0
+%fieldset.control-group{:class => error ? 'has-error' : 'showdown'}
+  =f.label :snow_over_night, :class => 'control-label'
+  .controls
+    =f.text_field :snow_over_night, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:snow_over_night, :class => 'text-error') : pat(" ")
+- error = @report.errors.key?(:snow_sunday) && @report.errors[:snow_sunday].count > 0
+%fieldset.control-group{:class => error ? 'has-error' : 'showdown'}
+  =f.label :snow_sunday, :class => 'control-label'
+  .controls
+    =f.text_field :snow_sunday, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:snow_sunday, :class => 'text-error') : pat(" ")
+%input{:id => 'newSnow'}
+%div{:id=> 'calc'} Calculate Totals
+- error = @report.errors.key?(:snow_12_hours) && @report.errors[:snow_12_hours].count > 0
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :snow_12_hours, :class => 'control-label'
+  .controls
+    =f.text_field :snow_12_hours, :id => 'snow12', :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:snow_12_hours, :class => 'text-error') : pat(" ")
+- error = @report.errors.key?(:snow_24_hours) && @report.errors[:snow_24_hours].count > 0
+%fieldset.control-group{:class => error ? 'has-error' : 'showdown'}
+  =f.label :snow_24_hours, :class => 'control-label'
+  .controls
+    =f.text_field :snow_24_hours, :id => "snow24", :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:snow_24_hours, :class => 'text-error') : pat(" ")
+- error = @report.errors.key?(:snow_48_hours) && @report.errors[:snow_48_hours].count > 0
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :snow_48_hours, :class => 'control-label'
+  .controls
+    =f.text_field :snow_48_hours, :id => "snow48", :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:snow_48_hours, :class => 'text-error') : pat(" ")
+- error = @report.errors.key?(:snow_72_hours) && @report.errors[:snow_72_hours].count > 0
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :snow_72_hours, :class => 'control-label'
+  .controls
+    =f.text_field :snow_72_hours, :id => "snow72", :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:snow_72_hours, :class => 'text-error') : pat(" ")
+- error = @report.errors.key?(:snow_4_days) && @report.errors[:snow_4_days].count > 0
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :snow_4_days, :class => 'control-label'
+  .controls
+    =f.text_field :snow_4_days, :id => "snow4", :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:snow_4_days, :class => 'text-error') : pat(" ")
+- error = @report.errors.key?(:snow_5_days) && @report.errors[:snow_5_days].count > 0
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :snow_5_days, :class => 'control-label'
+  .controls
+    =f.text_field :snow_5_days, :id => "snow5", :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:snow_5_days, :class => 'text-error') : pat(" ")
+- error = @report.errors.key?(:snow_7_days) && @report.errors[:snow_7_days].count > 0
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :snow_7_days, :class => 'control-label'
+  .controls
+    =f.text_field :snow_7_days, :id => "snow7", :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:snow_7_days, :class => 'text-error') : pat(" ")
+- error = @report.errors.key?(:lodge_depth) && @report.errors[:lodge_depth].count > 0
+%fieldset.control-group{:class => error ? 'has-error' : 'showdown'}
+  =f.label :lodge_depth, :class => 'control-label'
+  .controls
+    =f.text_field :lodge_depth, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:lodge_depth, :class => 'text-error') : pat(" ")
+- error = @report.errors.key?(:summit_depth) && @report.errors[:summit_depth].count > 0
+%fieldset.control-group{:class => error ? 'has-error' : 'showdown'}
+  =f.label :summit_depth, :class => 'control-label'
+  .controls
+    =f.text_field :summit_depth, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:summit_depth, :class => 'text-error') : pat(" ")
+- error = @report.errors.key?(:snow_season_total) && @report.errors[:snow_season_total].count > 0
+%fieldset.control-group{:class => error ? 'has-error' : 'showdown'}
+  =f.label :snow_season_total, :class => 'control-label'
+  .controls
+    =f.text_field :snow_season_total, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:snow_season_total, :class => 'text-error') : pat(" ")
+%h2 Weather Conditions
+- error = @report.errors.key?(:weather_conditions) && @report.errors[:weather_conditions].count > 0
+%fieldset.control-group{:class => error ? 'has-error' : 'showdown'}
+  =f.label :weather_conditions, :class => 'control-label'
+  .controls
+    =f.text_field :weather_conditions, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:weather_conditions, :class => 'text-error') : pat(" ")
+- error = @report.errors.key?(:temperature) && @report.errors[:temperature].count > 0
+%fieldset.control-group{:class => error ? 'has-error' : 'showdown'}
+  =f.label :temperature, :class => 'control-label'
+  .controls
+    =f.text_field :temperature, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:temperature, :class => 'text-error') : pat(" ")
+- error = @report.errors.key?(:visibility) && @report.errors[:visibility].count > 0
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :visibility, :class => 'control-label'
+  .controls
+    =f.text_field :visibility, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:visibility, :class => 'text-error') : pat(" ")
+- error = @report.errors.key?(:wind_direction) && @report.errors[:wind_direction].count > 0
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :wind_direction, :class => 'control-label'
+  .controls
+    =f.text_field :wind_direction, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:wind_direction, :class => 'text-error') : pat(" ")
+- error = @report.errors.key?(:wind_speed) && @report.errors[:wind_speed].count > 0
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :wind_speed, :class => 'control-label'
+  .controls
+    =f.text_field :wind_speed, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:wind_speed, :class => 'text-error') : pat(" ")
+- error = @report.errors.key?(:weather_sunday) && @report.errors[:weather_sunday].count > 0
+%fieldset.control-group{:class => error ? 'has-error' : 'showdown'}
+  =f.label :weather_sunday, :class => 'control-label'
+  .controls
+    =f.text_field :weather_sunday, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:weather_sunday, :class => 'text-error') : pat(" ")
+- error = @report.errors.key?(:weather_monday) && @report.errors[:weather_monday].count > 0
+%fieldset.control-group{:class => error ? 'has-error' : 'showdown'}
+  =f.label :weather_monday, :class => 'control-label'
+  .controls
+    =f.text_field :weather_monday, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:weather_monday, :class => 'text-error') : pat(" ")
+- error = @report.errors.key?(:weather_tuesday) && @report.errors[:weather_tuesday].count > 0
+%fieldset.control-group{:class => error ? 'has-error' : 'showdown'}
+  =f.label :weather_tuesday, :class => 'control-label'
+  .controls
+    =f.text_field :weather_tuesday, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:weather_tuesday, :class => 'text-error') : pat(" ")
+- error = @report.errors.key?(:weather_wednesday) && @report.errors[:weather_wednesday].count > 0
+%fieldset.control-group{:class => error ? 'has-error' : 'showdown'}
+  =f.label :weather_wednesday, :class => 'control-label'
+  .controls
+    =f.text_field :weather_wednesday, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:weather_wednesday, :class => 'text-error') : pat(" ")
+- error = @report.errors.key?(:weather_thursday) && @report.errors[:weather_thursday].count > 0
+%fieldset.control-group{:class => error ? 'has-error' : 'showdown'}
+  =f.label :weather_thursday, :class => 'control-label'
+  .controls
+    =f.text_field :weather_thursday, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:weather_thursday, :class => 'text-error') : pat(" ")
+- error = @report.errors.key?(:weather_friday) && @report.errors[:weather_friday].count > 0
+%fieldset.control-group{:class => error ? 'has-error' : 'showdown'}
+  =f.label :weather_friday, :class => 'control-label'
+  .controls
+    =f.text_field :weather_friday, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:weather_friday, :class => 'text-error') : pat(" ")
+- error = @report.errors.key?(:weather_saturday) && @report.errors[:weather_saturday].count > 0
+%fieldset.control-group{:class => error ? 'has-error' : 'showdown'}
+  =f.label :weather_saturday, :class => 'control-label'
+  .controls
+    =f.text_field :weather_saturday, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:weather_saturday, :class => 'text-error') : pat(" ")
+
+
+
+
+
+%h2 Hours & Operation
+- error = @report.errors.key?(:resort_status) && @report.errors[:resort_status].count > 0
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :resort_status, :class => 'control-label'
+  .controls
+    =f.text_field :resort_status, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:resort_status, :class => 'text-error') : pat(" ")
+- error = @report.errors.key?(:open_time) && @report.errors[:open_time].count > 0
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :open_time, :class => 'control-label'
+  .controls
+    =f.text_field :open_time, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:open_time, :class => 'text-error') : pat(" ")
+- error = @report.errors.key?(:close_time) && @report.errors[:close_time].count > 0
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :close_time, :class => 'control-label'
+  .controls
+    =f.text_field :close_time, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:close_time, :class => 'text-error') : pat(" ")
+- error = @report.errors.key?(:night_open_time) && @report.errors[:night_open_time].count > 0
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :night_open_time, :class => 'control-label'
+  .controls
+    =f.text_field :night_open_time, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:night_open_time, :class => 'text-error') : pat(" ")
+- error = @report.errors.key?(:night_close_time) && @report.errors[:night_close_time].count > 0
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :night_close_time, :class => 'control-label'
+  .controls
+    =f.text_field :night_close_time, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:night_close_time, :class => 'text-error') : pat(" ")
+- error = @report.errors.key?(:total_acres_open) && @report.errors[:total_acres_open].count > 0
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :total_acres_open, :class => 'control-label'
+  .controls
+    =f.text_field :total_acres_open, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:total_acres_open, :class => 'text-error') : pat(" ")
+- error = @report.errors.key?(:days_hours_operation) && @report.errors[:days_hours_operation].count > 0
+%fieldset.control-group{:class => error ? 'has-error' : 'showdown'}
+  =f.label :days_hours_operation, :class => 'control-label'
+  .controls
+    =f.text_field :days_hours_operation, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:days_hours_operation, :class => 'text-error') : pat(" ")
+- error = @report.errors.key?(:trails_open) && @report.errors[:trails_open].count > 0
+%fieldset.control-group{:class => error ? 'has-error' : 'showdown'}
+  =f.label :trails_open, :class => 'control-label'
+  .controls
+    =f.text_field :trails_open, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:trails_open, :class => 'text-error') : pat(" ")
+- error = @report.errors.key?(:lifts_open) && @report.errors[:lifts_open].count > 0
+%fieldset.control-group{:class => error ? 'has-error' : 'showdown'}
+  =f.label :lifts_open, :class => 'control-label'
+  .controls
+    =f.text_field :lifts_open, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:lifts_open, :class => 'text-error') : pat(" ")
+%h2 Notes & News
+- error = @report.errors.key?(:notes) && @report.errors[:notes].count > 0
+%fieldset.control-group{:class => error ? 'has-error' : 'showdown'}
+  =f.label :notes, :class => 'control-label'
+  .controls
+    =f.text_field :notes, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:notes, :class => 'text-error') : pat(" ")
+- error = @report.errors.key?(:news) && @report.errors[:news].count > 0
+%fieldset.control-group{:class => error ? 'has-error' : 'showdown'}
+  =f.label :news, :class => 'control-label'
+  .controls
+    =f.text_field :news, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:news, :class => 'text-error') : pat(" ")
+
+.form-actions
+  =f.submit pat(:save), :class => 'btn btn-primary'
+  &nbsp;
+  =f.submit pat(:save_and_continue), :class => 'btn btn-info', :name => 'save_and_continue'
+  &nbsp;
+  =link_to pat(:cancel), url(:reports, :index), :class => 'btn btn-default'
+
+
+%script{:type=>"text/javascript"}
+  $("#calc").click(function() {
+  alert( "Handler for .click() called." );
+  var newSnow = parseInt($("#newSnow").val(), 10) || 0;
+
+  var snow12 = parseInt($("#snow12").val(), 10) || 0;
+  var snow24 = parseInt($("#snow24").val(), 10) || 0;
+  var snow48 = parseInt($("#snow48").val(), 10) || 0;
+  var snow72 =  parseInt($("#snow72").val(), 10) || 0;
+  var snow4 = parseInt($("#snow4").val(), 10) || 0;
+  var snow5 = parseInt($("#snow5").val(), 10) || 0;
+  var snow7 = parseInt($("#snow7").val(), 10) || 0;
+  $("#snow12").val(newSnow);
+  $("#snow24").val(newSnow + snow12);
+  $("#snow48").val(newSnow + snow24);
+  $("#snow72").val(newSnow + snow48);
+  $("#snow4").val(newSnow + snow72);
+  $("#snow5").val(newSnow + snow4);
+  $("#snow7").val(newSnow + snow5);
+  });

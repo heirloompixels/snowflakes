@@ -1,0 +1,60 @@
+%ul.nav.nav-tabs
+  %li.active=link_to tag_icon(:list, pat(:list)), url(:parks, :index)
+  %li=link_to tag_icon(:plus, pat(:new)), url(:parks, :new)
+
+.tabs-content
+  %table#list.table.table-striped.table-hover.table-condensed
+    %thead
+      %tr
+        %th.header.list-menu
+          .dropdown
+            %a.list-menu-toggle.dropdown-toggle{:href => '#', :'data-toggle' => :dropdown}
+              =tag_icon :magic
+              %span.caret
+            %ul.list-menu.dropdown-menu{:role => :menu}
+              %li.list-menu-wrapper=link_to tag_icon(:check, pat(:select_all)), '#', :id => 'select-all', :class => 'list-menu-link'
+              %li.list-menu-wrapper.list-menu-wrapper-disabled
+                =link_to tag_icon(:'check-empty', pat(:deselect_all)), '#', :id => 'deselect-all', :class => 'list-menu-link list-menu-link-disabled'
+              %li.list-menu-divider.divider
+              %li.list-menu-wrapper.list-menu-wrapper-disabled
+                =link_to tag_icon(:trash, pat(:delete_selected)), '#', :id => 'delete-selected', :class => 'list-menu-link list-menu-link-disabled'
+                .list-menu-popover-delete-selected.popover.right
+                  .arrow
+                  %h3.popover-title=pat(:delete_selected_title)
+                  .popover-content
+                    -form_tag url(:parks, :destroy_many), :method => :delete do
+                      =hidden_field_tag :park_ids, :'data-delete-many-ids' => true
+                      =submit_tag pat(:delete), :class =>'list-menu-popover-delete-selected-btn btn btn-danger btn-small'
+                      .btn.btn-default.btn-small.cancel=pat(:cancel)
+        %th.header= mat(:park, :id)
+        %th.header= mat(:park, :name)
+        %th.header= mat(:park, :difficulty)
+        %th.header= mat(:park, :groomed_or_cut)
+        %th.header= mat(:park, :status)
+        %th.header= mat(:park, :featured_terrain)
+        %th.header= mat(:park, :night_operations)
+        %th.header.list-row-action-header
+
+    %tbody
+      -@parks.each do |park|
+        %tr.list-row
+          %td.list-column.list-selectable
+            =check_box_tag 'park_ids[]', :value => park.id, :class => 'list-selectable-checkbox'
+          %td.list-column=park.id
+          %td.list-column=park.name
+          %td.list-column=park.difficulty
+          %td.list-column=park.groomed_or_cut
+          %td.list-column=park.status
+          %td.list-column=park.featured_terrain
+          %td.list-column=park.night_operations
+          %td.list-column.list-row-action
+            .list-row-action-wrapper
+              =link_to tag_icon(:edit), :href => url(:parks, :edit, :id => park.id), :rel => :tooltip, :title => "#{pat(:edit)} park", :class => 'list-row-action-wrapper-link'
+              =link_to tag_icon(:trash), :rel => :tooltip, :title => "#{pat(:delete)} park", :class => 'list-row-action-delete-one list-row-action-wrapper-link'
+              .popover.list-row-action-popover-delete-one.left
+                .arrow
+                %h3.popover-title=pat(:delete, :model => "park")
+                .popover-content
+                  -form_tag url(:parks, :destroy, :id => park.id), :method => :delete do
+                    =submit_tag pat(:delete), :class =>'list-row-action-popover-delete-one-btn btn btn-danger btn-small'
+                    .btn.btn-default.btn-small.cancel=pat(:cancel)

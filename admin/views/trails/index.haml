@@ -1,0 +1,64 @@
+%ul.nav.nav-tabs
+  %li.active=link_to tag_icon(:list, pat(:list)), url(:trails, :index)
+  %li=link_to tag_icon(:plus, pat(:new)), url(:trails, :new)
+
+.tabs-content
+  %table#list.table.table-striped.table-hover.table-condensed
+    %thead
+      %tr
+        %th.header.list-menu
+          .dropdown
+            %a.list-menu-toggle.dropdown-toggle{:href => '#', :'data-toggle' => :dropdown}
+              =tag_icon :magic
+              %span.caret
+            %ul.list-menu.dropdown-menu{:role => :menu}
+              %li.list-menu-wrapper=link_to tag_icon(:check, pat(:select_all)), '#', :id => 'select-all', :class => 'list-menu-link'
+              %li.list-menu-wrapper.list-menu-wrapper-disabled
+                =link_to tag_icon(:'check-empty', pat(:deselect_all)), '#', :id => 'deselect-all', :class => 'list-menu-link list-menu-link-disabled'
+              %li.list-menu-divider.divider
+              %li.list-menu-wrapper.list-menu-wrapper-disabled
+                =link_to tag_icon(:trash, pat(:delete_selected)), '#', :id => 'delete-selected', :class => 'list-menu-link list-menu-link-disabled'
+                .list-menu-popover-delete-selected.popover.right
+                  .arrow
+                  %h3.popover-title=pat(:delete_selected_title)
+                  .popover-content
+                    -form_tag url(:trails, :destroy_many), :method => :delete do
+                      =hidden_field_tag :trail_ids, :'data-delete-many-ids' => true
+                      =submit_tag pat(:delete), :class =>'list-menu-popover-delete-selected-btn btn btn-danger btn-small'
+                      .btn.btn-default.btn-small.cancel=pat(:cancel)
+        %th.header= mat(:trail, :id)
+        %th.header= mat(:trail, :name)
+        %th.header= mat(:trail, :status)
+        %th.header= mat(:trail, :groomed)
+        %th.header= mat(:trail, :snow_making)
+        %th.header= mat(:trail, :featured_terrain)
+        %th.header= mat(:trail, :night_operation)
+        %th.header= mat(:trail, :difficulty)
+        %th.header= mat(:trail, :type)
+        %th.header.list-row-action-header
+
+    %tbody
+      -@trails.each do |trail|
+        %tr.list-row
+          %td.list-column.list-selectable
+            =check_box_tag 'trail_ids[]', :value => trail.id, :class => 'list-selectable-checkbox'
+          %td.list-column=trail.id
+          %td.list-column=trail.name
+          %td.list-column=trail.status
+          %td.list-column=trail.groomed
+          %td.list-column=trail.snow_making
+          %td.list-column=trail.featured_terrain
+          %td.list-column=trail.night_operation
+          %td.list-column=trail.difficulty
+          %td.list-column=trail.type
+          %td.list-column.list-row-action
+            .list-row-action-wrapper
+              =link_to tag_icon(:edit), :href => url(:trails, :edit, :id => trail.id), :rel => :tooltip, :title => "#{pat(:edit)} trail", :class => 'list-row-action-wrapper-link'
+              =link_to tag_icon(:trash), :rel => :tooltip, :title => "#{pat(:delete)} trail", :class => 'list-row-action-delete-one list-row-action-wrapper-link'
+              .popover.list-row-action-popover-delete-one.left
+                .arrow
+                %h3.popover-title=pat(:delete, :model => "trail")
+                .popover-content
+                  -form_tag url(:trails, :destroy, :id => trail.id), :method => :delete do
+                    =submit_tag pat(:delete), :class =>'list-row-action-popover-delete-one-btn btn btn-danger btn-small'
+                    .btn.btn-default.btn-small.cancel=pat(:cancel)

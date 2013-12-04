@@ -1,0 +1,43 @@
+- error = @park.errors.key?(:name) && @park.errors[:name].count > 0
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :name, :class => 'control-label'
+  .controls
+    =f.text_field :name, :class => 'form-control input-large input-with-feedback', :autofocus => true
+    %span.help-inline=error ? f.error_message_on(:name, :class => 'text-error') : pat(:example)
+- error = @park.errors.key?(:difficulty) && @park.errors[:difficulty].count > 0
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :difficulty, :class => 'control-label'
+  .controls
+    =f.text_field :difficulty, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:difficulty, :class => 'text-error') : pat(:example)
+- error = @park.errors.key?(:groomed_or_cut) && @park.errors[:groomed_or_cut].count > 0
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :groomed_or_cut, :class => 'control-label'
+  .controls
+    =f.text_field :groomed_or_cut, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:groomed_or_cut, :class => 'text-error') : pat(:example)
+- error = @park.errors.key?(:status) && @park.errors[:status].count > 0
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :status, :class => 'control-label'
+  .controls
+    =f.text_field :status, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:status, :class => 'text-error') : pat(:example)
+- error = @park.errors.key?(:featured_terrain) && @park.errors[:featured_terrain].count > 0
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :featured_terrain, :class => 'control-label'
+  .controls
+    =f.text_field :featured_terrain, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:featured_terrain, :class => 'text-error') : pat(:example)
+- error = @park.errors.key?(:night_operations) && @park.errors[:night_operations].count > 0
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :night_operations, :class => 'control-label'
+  .controls
+    =f.text_field :night_operations, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:night_operations, :class => 'text-error') : pat(:example)
+
+.form-actions
+  =f.submit pat(:save), :class => 'btn btn-primary'
+  &nbsp;
+  =f.submit pat(:save_and_continue), :class => 'btn btn-info', :name => 'save_and_continue'
+  &nbsp;
+  =link_to pat(:cancel), url(:parks, :index), :class => 'btn btn-default'
