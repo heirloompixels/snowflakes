@@ -95,6 +95,7 @@ module Snowflake
           xml.day(@report.weather_saturday, :name=>"Saturday", :high=>"", :low=>"", :snowFall=>"", :weather=>"")
         end
         xml.comments do
+          xml.comment @report.forecast, :name => "forecast"
           xml.comment @report.trails_open, :name => "trailsOpen"
           xml.comment @report.lifts_open, :name => "liftsOpen"
           xml.comment @report.news, :name => "Special Events"
