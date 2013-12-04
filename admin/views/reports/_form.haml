@@ -167,6 +167,8 @@
   .controls
     =f.text_field :lifts_open, :class => 'form-control input-large input-with-feedback'
     %span.help-inline=error ? f.error_message_on(:lifts_open, :class => 'text-error') : pat(" ")
+
+
 %h2 Notes & News
 - error = @report.errors.key?(:notes) && @report.errors[:notes].count > 0
 %fieldset.control-group{:class => error ? 'has-error' : 'showdown'}
@@ -180,6 +182,12 @@
   .controls
     =f.text_field :news, :class => 'form-control input-large input-with-feedback'
     %span.help-inline=error ? f.error_message_on(:news, :class => 'text-error') : pat(" ")
+- error = @report.errors.key?(:park) && @report.errors[:park].count > 0
+%fieldset.control-group{:class => error ? 'has-error' : 'showdown'}
+  =f.label "Park", :class => 'control-label'
+  .controls
+    =f.text_field :park, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:park, :class => 'text-error') : pat(" ")
 
 .form-actions
   =f.submit pat(:save), :class => 'btn btn-primary'

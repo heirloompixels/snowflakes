@@ -3,6 +3,7 @@ class Report
 
   # property <name>, <type>
   property :id, Serial
+  property :park, String
   property :location_name, String
   property :primary_surface, String
   property :secondary_surface, String

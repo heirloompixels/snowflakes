@@ -96,6 +96,7 @@ module Snowflake
         end
         xml.comments do
           xml.comment @report.forecast, :name => "forecast"
+          xml.comment @report.park, :name => "park"
           xml.comment @report.trails_open, :name => "trailsOpen"
           xml.comment @report.lifts_open, :name => "liftsOpen"
           xml.comment @report.news, :name => "Special Events"
