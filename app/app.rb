@@ -73,8 +73,9 @@ module Snowflake
       xml.instruct! :xml, :version => '1.0'
       xml.target! << "<!DOCTYPE MTN.XML PUBLIC 'MTN.XML 1.0' 'http://mtnxml.org/dtd/mtnxml-1.0.dtd'>\n"
       xml.report(:name => "Showdown Ski Area", :updated => @report.updated_at.strftime("%Y-%m-%d %H:%M:%S"),:units => "imperial") do
+      xml.operations(:resortStatus=>@report.resort_status, :openTime=> @report.opent_time, :closeTime=> @report.close_time,  :nightOpenTime =>@report.night_open_time, :nightCloseTime => @report.night_close_time, :totalAcres=>'640')
         xml.currentConditions do
-          xml.resortWide(:totalAcresOpen => "465")
+          xml.resortWide(:totalAcresOpen => "640")
             xml.resortLocations do
               xml.location(:name => "Summit", :primarySurface => @report.primary_surface, :secondarySurface => @report.secondary_surface, :base => @report.base, :baseRange => @report.base_range, :stormTotal => @report.storm_total, :snowOverNight => @report.snow_over_night, :snow12Hours => @report.snow_12_hours, :snow24Hours => @report.snow_24_hours, :snow48Hours => @report.snow_48_hours, :snow72Hours => @report.snow_72_hours, :snow4Days => @report.snow_4_days, :snow5Days => @report.snow_5_days, :snow7Days => @report.snow_7_days, :snowSeasonTotal => @report.snow_season_total, :weatherConditions => @report.weather_conditions, :temperature => @report.temperature, :visibility => @report.visibility, :windDirection => @report.wind_direction, :windSpeed => @report.wind_speed)
             end
@@ -96,8 +97,8 @@ module Snowflake
         xml.comments do
           xml.comment @report.trails_open, :name => "trailsOpen"
           xml.comment @report.lifts_open, :name => "liftsOpen"
-          xml.comment @report.news, :name => "news"
-          xml.comment @report.notes, :name => "notes"
+          xml.comment @report.news, :name => "Special Events"
+          xml.comment @report.notes, :name => "Comments"
           xml.comment @report.lodge_depth, :name => "lodgeDepth"
           xml.comment @report.summit_depth, :name => "summitDepth"
           xml.comment @report.days_hours_operation, :name => "daysAndHours"
