@@ -44,6 +44,7 @@ class Report
   property :weather_thursday, String
   property :weather_friday, String
   property :weather_saturday, String
+  property :forecast, String
 
 
   property :created_at, DateTime
